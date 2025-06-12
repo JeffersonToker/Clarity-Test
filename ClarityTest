@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clarity Test Website</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN for charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Custom styles for the Inter font and basic body setup */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        /* Hide all page content initially */
+        .page-content {
+            display: none;
+        }
+        /* Show the active page */
+        .page-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="min-h-screen flex flex-col items-center p-4 md:p-8 bg-gray-100">
+        <!-- Header and Navigation -->
+        <header class="w-full max-w-4xl bg-white shadow-lg rounded-xl p-6 mb-8">
+            <h1 class="text-3xl font-bold text-center text-blue-700 mb-4">Clarity Test Site</h1>
+            <nav class="flex flex-wrap justify-center gap-4">
+                <a href="#home" class="nav-link bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300">Home</a>
+                <a href="#forms" class="nav-link bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300">Forms</a>
+                <a href="#charts" class="nav-link bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300">Charts</a>
+                <a href="#downloads" class="nav-link bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300">Downloads</a>
+                <a href="#dynamic" class="nav-link bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300">Dynamic Content</a>
+            </nav>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="w-full max-w-4xl bg-white shadow-lg rounded-xl p-6">
+            <!-- Home Page -->
+            <section id="home-page" class="page-content active">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Welcome to the Clarity Test Site</h2>
+                <p class="text-gray-700 mb-4">
+                    This website is designed to help you test various features of Microsoft Clarity analytics.
+                    Navigate through the different sections using the links above to interact with common web elements.
+                </p>
+                <div class="mb-4">
+                    <h3 class="text-xl font-medium text-gray-700 mb-2">External Link Example</h3>
+                    <a href="https://www.microsoft.com/en-us/clarity" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline transition duration-300">
+                        Visit Microsoft Clarity Homepage (External)
+                    </a>
+                </div>
+                <div>
+                    <h3 class="text-xl font-medium text-gray-700 mb-2">Internal Link Example</h3>
+                    <p class="text-gray-700">
+                        Check out our <a href="#forms" class="nav-link text-blue-600 hover:text-blue-800 underline transition duration-300">Forms Page</a> to see input fields and radio buttons in action.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Forms Page -->
+            <section id="forms-page" class="page-content">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Forms and Inputs</h2>
+                <p class="text-gray-700 mb-4">
+                    This section contains various form elements to test user interaction and data capture.
+                </p>
+                <form id="test-form" class="space-y-4">
+                    <div>
+                        <label for="name" class="block text-gray-700 font-medium mb-1">Your Name:</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" class="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-gray-700 font-medium mb-1">Your Email:</label>
+                        <input type="email" id="email" name="email" placeholder="john.doe@example.com" class="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-2">Favorite Color:</label>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="color" value="red" class="form-radio text-red-500 h-4 w-4">
+                                <span class="ml-2 text-gray-700">Red</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="color" value="blue" class="form-radio text-blue-500 h-4 w-4">
+                                <span class="ml-2 text-gray-700">Blue</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="color" value="green" class="form-radio text-green-500 h-4 w-4">
+                                <span class="ml-2 text-gray-700">Green</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-gray-700 font-medium mb-1">Your Message:</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Enter your message here..." class="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"></textarea>
+                    </div>
+                    <button type="submit" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 shadow-md">
+                        Submit Form
+                    </button>
+                    <p id="form-message" class="text-green-600 mt-2 hidden">Form submitted successfully (dummy action)!</p>
+                </form>
+            </section>
+
+            <!-- Charts Page -->
+            <section id="charts-page" class="page-content">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Charts and Graphs</h2>
+                <p class="text-gray-700 mb-4">
+                    This section displays a sample chart generated with dummy data to test analytics capabilities.
+                </p>
+                <div class="w-full bg-gray-50 p-4 rounded-lg shadow-inner">
+                    <canvas id="myBarChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Downloads Page -->
+            <section id="downloads-page" class="page-content">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">File Downloads</h2>
+                <p class="text-gray-700 mb-4">
+                    Test tracking of file downloads. Clicking these links will initiate a download.
+                </p>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="text-xl font-medium text-gray-700 mb-2">Dummy Text File</h3>
+                        <button id="download-text-btn" class="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 shadow-md">
+                            Download Sample Text File
+                        </button>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-medium text-gray-700 mb-2">Dummy PDF Link</h3>
+                        <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" download="sample_document.pdf" class="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 px-4 rounded-lg inline-block transition duration-300 shadow-md">
+                            Download Sample PDF (External Link)
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dynamic Content Page -->
+            <section id="dynamic-page" class="page-content">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-4">Dynamic Content and Interactions</h2>
+                <p class="text-gray-700 mb-4">
+                    Observe how Clarity tracks interactions with dynamically added content and hover effects.
+                </p>
+                <div class="mb-6">
+                    <h3 class="text-xl font-medium text-gray-700 mb-2">Add Content Dynamically</h3>
+                    <button id="add-content-btn" class="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-2 px-4 rounded-lg transition duration-300 shadow-md">
+                        Add More Text
+                    </button>
+                    <div id="dynamic-content-area" class="mt-4 p-4 border border-dashed border-gray-300 rounded-md bg-gray-50 text-gray-700">
+                        This is the initial dynamic content area.
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-medium text-gray-700 mb-2">Hover Effect Example</h3>
+                    <div id="hover-box" class="w-48 h-24 bg-yellow-300 flex items-center justify-center rounded-lg shadow-md transition-all duration-300 cursor-pointer hover:bg-yellow-400">
+                        <span class="text-gray-800 font-semibold">Hover Over Me!</span>
+                    </div>
+                    <p id="hover-message" class="text-sm text-gray-600 mt-2 opacity-0 transition-opacity duration-300">You hovered over the box!</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="w-full max-w-4xl bg-white shadow-lg rounded-xl p-4 mt-8 text-center text-gray-600 text-sm">
+            &copy; 2025 Clarity Test Site. All rights reserved. For testing purposes only.
+            <!-- Placeholder for Microsoft Clarity Tracking Code -->
+            <!--
+            <script type="text/javascript">
+                (function(c,l,a,r,i,t,y){
+                    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+                })(window, document, "clarity", "script", "YOUR_CLARITY_PROJECT_ID");
+            </script>
+            -->
+        </footer>
+    </div>
+
+    <script>
+        // --- Page Navigation Logic ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pages = document.querySelectorAll('.page-content');
+
+            // Function to show a specific page
+            const showPage = (id) => {
+                pages.forEach(page => {
+                    page.classList.remove('active');
+                });
+                const targetPage = document.getElementById(id + '-page');
+                if (targetPage) {
+                    targetPage.classList.add('active');
+                    // Special handling for chart page to render chart when active
+                    if (id === 'charts') {
+                        renderChart();
+                    }
+                }
+            };
+
+            // Handle initial page load based on hash or default to home
+            const initialHash = window.location.hash.substring(1);
+            if (initialHash && document.getElementById(initialHash + '-page')) {
+                showPage(initialHash);
+            } else {
+                showPage('home'); // Default to home page
+            }
+
+            // Add click listeners to navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault(); // Prevent default anchor behavior
+                    const targetId = event.target.getAttribute('href').substring(1);
+                    showPage(targetId);
+                    window.location.hash = targetId; // Update URL hash
+                });
+            });
+
+            // --- Forms Page Logic ---
+            const testForm = document.getElementById('test-form');
+            const formMessage = document.getElementById('form-message');
+
+            if (testForm) {
+                testForm.addEventListener('submit', (event) => {
+                    event.preventDefault(); // Prevent actual form submission
+                    console.log('Form submitted (dummy action)!');
+                    formMessage.classList.remove('hidden');
+                    setTimeout(() => {
+                        formMessage.classList.add('hidden');
+                        testForm.reset(); // Clear form fields
+                    }, 3000); // Hide message after 3 seconds
+                });
+            }
+
+            // --- Charts Page Logic ---
+            let myChartInstance = null; // To hold the chart instance
+
+            const renderChart = () => {
+                const ctx = document.getElementById('myBarChart');
+                if (ctx) {
+                    // Destroy existing chart if it exists to prevent re-rendering issues
+                    if (myChartInstance) {
+                        myChartInstance.destroy();
+                    }
+
+                    myChartInstance = new Chart(ctx, {
+                        type: 'bar', // Type of chart
+                        data: {
+                            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+                            datasets: [{
+                                label: 'Monthly Sales',
+                                data: [65, 59, 80, 81, 56, 75],
+                                backgroundColor: [
+                                    'rgba(255, 99, 132, 0.6)',
+                                    'rgba(54, 162, 235, 0.6)',
+                                    'rgba(255, 206, 86, 0.6)',
+                                    'rgba(75, 192, 192, 0.6)',
+                                    'rgba(153, 102, 255, 0.6)',
+                                    'rgba(255, 159, 64, 0.6)'
+                                ],
+                                borderColor: [
+                                    'rgba(255, 99, 132, 1)',
+                                    'rgba(54, 162, 235, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(75, 192, 192, 1)',
+                                    'rgba(153, 102, 255, 1)',
+                                    'rgba(255, 159, 64, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            },
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: 'Dummy Sales Data Bar Chart'
+                                }
+                            }
+                        }
+                    });
+                }
+            };
+
+            // --- Downloads Page Logic ---
+            const downloadTextBtn = document.getElementById('download-text-btn');
+            if (downloadTextBtn) {
+                downloadTextBtn.addEventListener('click', () => {
+                    const textContent = "This is a dummy text file for download testing.\n\n" +
+                                        "You can use this to verify if Microsoft Clarity tracks file download clicks.";
+                    const blob = new Blob([textContent], { type: 'text/plain' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'clarity_test_file.txt';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url); // Clean up the URL object
+                    console.log('Dummy text file download initiated.');
+                });
+            }
+
+            // --- Dynamic Content Page Logic ---
+            const addContentBtn = document.getElementById('add-content-btn');
+            const dynamicContentArea = document.getElementById('dynamic-content-area');
+            let contentCount = 0;
+
+            if (addContentBtn && dynamicContentArea) {
+                addContentBtn.addEventListener('click', () => {
+                    contentCount++;
+                    const newParagraph = document.createElement('p');
+                    newParagraph.className = 'mt-2 text-gray-600';
+                    newParagraph.textContent = `This is dynamically added content #${contentCount}. It should be tracked by Clarity.`;
+                    dynamicContentArea.appendChild(newParagraph);
+                    console.log(`Dynamically added content #${contentCount}.`);
+                });
+            }
+
+            const hoverBox = document.getElementById('hover-box');
+            const hoverMessage = document.getElementById('hover-message');
+
+            if (hoverBox && hoverMessage) {
+                hoverBox.addEventListener('mouseenter', () => {
+                    hoverMessage.classList.remove('opacity-0');
+                    hoverMessage.classList.add('opacity-100');
+                    console.log('Hovered over box.');
+                });
+
+                hoverBox.addEventListener('mouseleave', () => {
+                    hoverMessage.classList.remove('opacity-100');
+                    hoverMessage.classList.add('opacity-0');
+                    console.log('Mouse left box.');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
